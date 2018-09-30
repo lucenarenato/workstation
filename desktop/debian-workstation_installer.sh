@@ -82,16 +82,14 @@
 #       - Change site to .net domain
 #       - Change description
 #
+#   V1.0 2018-09-29
+#       - All major "TODO" fix
+#       - Change docky for plank
+#       - Add themes for plank
+#
+#
 #   TODO
-#   * Install advanced tmux config
-#   * sed the config to user powerline in tmux tmux_conf_theme_left_separator* tmux_conf_theme_right_separator
-#   * Add more bind keys to tmux
-#   * Auto ctrl b + I to load tmux plugins (?)
-#   * Add %user to wireshark group
 #   * Add XDM downloader (http://xdman.sourceforge.net/#downloads)
-#   * Add tmux config
-#            bind -n M-Left  previous-window
-#            bind -n M-Right next-window
 #   * Icons Fix
 #
 
@@ -135,7 +133,7 @@ apt-get update && apt-get -y upgrade
 
 
 #Install the packages from debian repo
-apt-get -y install docky clementine deluge dia vim vim-gtk vim-gui-common nmap vlc gimp blender gconf-editor fonts-powerline inkscape brasero gparted wireshark tmux curl net-tools iproute2 vpnc-scripts network-manager-vpnc vpnc network-manager-vpnc-gnome x2goclient xfce4-goodies xfce4-*plugin git gnome-icon-theme idle3 numix-gtk-theme numix-icon-theme firmware-linux firmware-linux-nonfree firmware-linux-free fonts-hack-ttf apt-transport-https htop python3-pip meld dconf-cli openvpn network-manager-openvpn network-manager-openvpn-gnome snapd gnome-terminal
+apt-get -y install plank clementine deluge dia vim vim-gtk vim-gui-common nmap vlc gimp blender gconf-editor fonts-powerline inkscape brasero gparted wireshark tmux curl net-tools iproute2 vpnc-scripts network-manager-vpnc vpnc network-manager-vpnc-gnome x2goclient xfce4-goodies xfce4-*plugin git gnome-icon-theme idle3 numix-gtk-theme numix-icon-theme firmware-linux firmware-linux-nonfree firmware-linux-free fonts-hack-ttf apt-transport-https htop python3-pip meld dconf-cli openvpn network-manager-openvpn network-manager-openvpn-gnome snapd gnome-terminal
 
 #Install the packages from snap repo
 ## mailspring
@@ -215,42 +213,8 @@ apt-get -y -f install
 usermod -s /usr/bin/fish $user
 
 
-#I'm not happy with this config right now ... working on my own personal configuration.
-#Create vim config
-#CREDITS to Amir <https://github.com/amix/vimrc>
-#runuser -l $user -c 'git clone https://github.com/amix/vimrc.git ~/.vim_runtime'
-#runuser -l $user -c 'bash ~/.vim_runtime/install_awesome_vimrc.sh'
-#
-#cat <<EOF >> /home/$user/.vimrc
-#if ! has("gui_running")
-#    set t_Co=256
-#endif
-#" feel free to choose :set background=light for a different style
-#set background=dark
-#colors peaksea
-#
-#set cm=blowfish2
-#"
-#EOF
-#
-#cat <<EOF >> /home/$user/.gvimrc
-#if ! has("gui_running")
-#    set t_Co=256
-#endif
-#" feel free to choose :set background=light for a different style
-#set background=dark
-#colors peaksea
-#
-#set cm=blowfish2
-#"
-#EOF
-
-##Set permit vim
-#achown $user:$user /home/$user/.vimrc
-#chown $user:$user /home/$user/.gvimrc
-
 #New VIM
-runuser -l $user -c 'curl -sLf https://spacevim.org/install.sh | bash
+runuser -l $user -c 'curl -sLf https://spacevim.org/install.sh' | bash
 
 #Set Oh My Fish
 #Credits <https://github.com/oh-my-fish/oh-my-fish>
@@ -328,11 +292,30 @@ set -g @resurrect-capture-pane-contents 'on'
 run '~/.tmux/plugins/tpm/tpm'
 EOF
 
+#Add bind keys to tmux
+sed -i 's/bind -r C-l next-window/#bind -r C-l next-window/g' ~/.tmux.conf
+sed -i 's/bind -r C-h previous-window/#bind -r C-h previous-window /g' ~/.tmux.conf
+echo "bind -n M-Left  previous-window" >>  ~/.tmux.conf
+echo "bind -n M-Right next-window" >>  ~/.tmux.conf
+
+#Change Tmux separator icons
+grep -rl "tmux_conf_theme_left" ~/.tmux.conf.local |xargs sed -i "s/tmux_conf_theme_left/#/g"
+grep -rl "tmux_conf_theme_right" ~/.tmux.conf.local |xargs sed -i "s/tmux_conf_theme_right/#/g"
+echo "tmux_conf_theme_left_separator_main=''" >> ~/.tmux.conf.local 
+echo "tmux_conf_theme_left_separator_sub=''" >> ~/.tmux.conf.local
+echo "tmux_conf_theme_right_separator_main=''" >> ~/.tmux.conf.local
+echo "tmux_conf_theme_right_separator_sub=''" >> ~/.tmux.conf.local
+
+
 #Install numix-circle-icons
 runuser -l $user -c 'mkdir -p ~/.icons'
 runuser -l $user -c 'git clone https://github.com/numixproject/numix-icon-theme-circle.git ~/.icons'
 runuser -l $user -c 'gtk-update-icon-cache ~/.icons/Numix-Circle'
 runuser -l $user -c 'gtk-update-icon-cache ~/.icons/Numix-Circle-Light'
+
+#Install plank themes
+runuser -l $user -c 'mkdir -p ~/.local/share/plank/themes'
+runuser -l $user -c 'git clone https://github.com/erikdubois/plankthemes.git ~/.local/share/plank/themes'
 
 
 #RTM
