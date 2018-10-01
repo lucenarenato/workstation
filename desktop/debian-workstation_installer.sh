@@ -87,6 +87,8 @@
 #       - Change docky for plank
 #       - Add themes for plank
 #
+#   V1.0 2018-10-01
+#       - Plank autostart
 #
 #   TODO
 #   * Add XDM downloader (http://xdman.sourceforge.net/#downloads)
@@ -316,6 +318,9 @@ runuser -l $user -c 'gtk-update-icon-cache ~/.icons/Numix-Circle-Light'
 #Install plank themes
 runuser -l $user -c 'mkdir -p ~/.local/share/plank/themes'
 runuser -l $user -c 'git clone https://github.com/erikdubois/plankthemes.git ~/.local/share/plank/themes'
+
+#Set plank autostart
+cd 
 
 
 #RTM
