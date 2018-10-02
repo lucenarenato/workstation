@@ -87,7 +87,7 @@
 #       - Change docky for plank
 #       - Add themes for plank
 #
-#   V1.0 2018-10-01
+#   V1.0.1 2018-10-01
 #       - Plank autostart
 #
 #   TODO
