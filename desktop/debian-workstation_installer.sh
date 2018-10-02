@@ -93,7 +93,7 @@
 #   TODO
 #   * Add XDM downloader (http://xdman.sourceforge.net/#downloads)
 #   * Icons Fix
-#
+#   * set ignorecase in ~/.SpaceVim/vimrc
 
 #RTM
 
