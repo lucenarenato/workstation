@@ -320,7 +320,7 @@ runuser -l $user -c 'mkdir -p ~/.local/share/plank/themes'
 runuser -l $user -c 'git clone https://github.com/erikdubois/plankthemes.git ~/.local/share/plank/themes'
 
 #Set plank autostart
-runuser -l $user -c 'curl -o ~/.config/autostart/plank.desktop https://raw.githubusercontent.com/renantmagalhaes/workstation/testing/system-fix/plank-fix/plank.desktop'
+runuser -l $user -c 'curl -o ~/.config/autostart/plank.desktop https://raw.githubusercontent.com/renantmagalhaes/workstation/static-files/plank-fix/plank.desktop'
 
 
 #RTM
