@@ -189,7 +189,7 @@ wget --content-disposition https://go.microsoft.com/fwlink/?LinkID=760868 -O /tm
 dpkg -i /tmp/visual_code_amd64.deb
 
 #Install Fonts
-git clone https://github.com/powerline/fonts.git /tmp/
+git clone https://github.com/powerline/fonts.git /tmp/fonts/
 bash /tmp/fonts/install.sh
 
 #Add Gogh
