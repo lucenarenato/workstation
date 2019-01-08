@@ -91,9 +91,12 @@
 #       - Plank autostart
 #
 #   TODO
-#   * Add XDM downloader (http://xdman.sourceforge.net/#downloads)
+#
 #   * Icons Fix
 #   * set ignorecase in ~/.SpaceVim/vimrc
+#   * Add zsh / oh-my-zsh as default shell
+#   * Auto configure / install plugins for zsh
+#   * Search new font for shell
 
 #RTM
 
