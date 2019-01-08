@@ -97,6 +97,7 @@
 #   * Add zsh / oh-my-zsh as default shell
 #   * Auto configure / install plugins for zsh
 #   * Search new font for shell
+#   * use tmux with mouse
 
 #RTM
 
