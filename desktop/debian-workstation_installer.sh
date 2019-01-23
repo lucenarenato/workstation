@@ -91,7 +91,9 @@
 #       - Plank autostart
 #
 #   TODO
-#
+#   * Add mojav theme - gnome3
+#   * Install telegram - site
+#   * Fonts download
 #   * Icons Fix
 #   * set ignorecase in ~/.SpaceVim/vimrc
 #   * Add zsh / oh-my-zsh as default shell
@@ -142,10 +144,7 @@ apt-get update && apt-get -y upgrade
 apt-get -y install plank clementine deluge dia vim vim-gtk vim-gui-common nmap vlc gimp blender gconf-editor fonts-powerline inkscape brasero gparted wireshark tmux curl net-tools iproute2 vpnc-scripts network-manager-vpnc vpnc network-manager-vpnc-gnome x2goclient xfce4-goodies xfce4-*plugin git gnome-icon-theme idle3 numix-gtk-theme numix-icon-theme firmware-linux firmware-linux-nonfree firmware-linux-free fonts-hack-ttf apt-transport-https htop python3-pip meld dconf-cli openvpn network-manager-openvpn network-manager-openvpn-gnome snapd gnome-terminal
 
 #Install the packages from snap repo
-## mailspring
-snap install mailspring
-## telegram
-snap install telegram-desktop
+
 ## slack
 snap install slack --classic
 
