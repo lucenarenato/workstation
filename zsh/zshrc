@@ -32,15 +32,17 @@ prompt_kube_ps1(){
 KUBE_PS1_NS_ENABLE="false"
 KUBE_PS1_DIVIDER=""
 KUBE_PS1_SYMBOL_USE_IMG="\u2638"
+
 # Display
 
 
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_LINUX_ICON='\uf300'
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_user dir_writable dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(kube_ps1 background_jobs command_execution_time status )
+
+
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=5
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=3
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_user dir_writable dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status , root_indicator , time , kube_ps1  background_jobs command_execution_time )
 
 # User with skull
 user_with_skull() {
@@ -76,8 +78,9 @@ POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='black'
 POWERLEVEL9K_VCS_CLEAN_BACKGROUND='green'
 POWERLEVEL9K_VCS_CLEAN_FOREGROUND='black'
 
-#KUBE PS1 
-KUBE_PS1_BG_COLOR='white'
+#command_execution_time
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='black'
+
 
 #characters backspace 
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
