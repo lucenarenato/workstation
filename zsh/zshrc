@@ -29,7 +29,9 @@ source "$ZSH/plugins/kube-ps1/kube-ps1.plugin.zsh"
 prompt_kube_ps1(){
    echo -n `kube_ps1`
 }
-
+KUBE_PS1_NS_ENABLE="false"
+KUBE_PS1_DIVIDER=""
+KUBE_PS1_SYMBOL_USE_IMG="\u2638"
 # Display
 
 
@@ -38,7 +40,7 @@ POWERLEVEL9K_LINUX_ICON='\uf300'
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=5
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=3
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_user dir_writable dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time kube_ps1 root_indicator background_jobs command_execution_time )
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status , root_indicator , time , kube_ps1  background_jobs command_execution_time )
 
 # User with skull
 user_with_skull() {
@@ -73,6 +75,9 @@ POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='green'
 POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='black'
 POWERLEVEL9K_VCS_CLEAN_BACKGROUND='green'
 POWERLEVEL9K_VCS_CLEAN_FOREGROUND='black'
+
+#KUBE PS1 
+KUBE_PS1_BG_COLOR='white'
 
 #characters backspace 
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
