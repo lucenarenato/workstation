@@ -1,11 +1,17 @@
+# Path to your oh-my-zsh installation.
+export ZSH="/home/$USER/.oh-my-zsh"
+
+# Set theme
 POWERLEVEL9K_MODE='nerdfont-complete'
 ZSH_THEME="powerlevel9k/powerlevel9k"
+
+
+#Plugins
 
 plugins=(
   git
   kubectl
   kube-ps1
-  z
   zsh-completions
   zsh-autosuggestions
   colored-man-pages
@@ -13,34 +19,32 @@ plugins=(
   command-not-found
   docker
   docker-compose
-  shrink-path
+  tmux
 
 )
 
-###kubectl
+
+### configure env kubectl
 source "$ZSH/plugins/kube-ps1/kube-ps1.plugin.zsh"
 prompt_kube_ps1(){
    echo -n `kube_ps1`
 }
 
-######
+# Display
 
 
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_DELIMITER=""
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_LINUX_ICON='\uf300'
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=5
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=3
-#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir_writable dir vcs)
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_user dir_writable dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status kube_ps1 root_indicator background_jobs command_execution_time )
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time kube_ps1 root_indicator background_jobs command_execution_time )
 
-
-#POWERLEVEL9K_OS_ICON_BACKGROUND="white"
-#POWERLEVEL9K_OS_ICON_FOREGROUND="blue"
-#POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
-#POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
-#POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
+# User with skull
+user_with_skull() {
+    echo -n "\uf1d0 work-$(whoami)"
+}
+POWERLEVEL9K_CUSTOM_USER="user_with_skull"
 
 
 #Colors
@@ -50,9 +54,6 @@ POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='black'
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='white'
 POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='yellow'
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='black'
-# OS segment
-#POWERLEVEL9K_OS_ICON_BACKGROUND='black'
-#POWERLEVEL9K_LINUX_ICON='%F{cyan} \uf303 %F{white} arch %F{cyan}linux%f'
 
 # VCS icons
 POWERLEVEL9K_VCS_GIT_ICON=$'\uf1d2 '
@@ -66,18 +67,19 @@ POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=$'\uf0ab '
 POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=$'\uf0aa '
 
 # VCS colours
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='blue'
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='yellow'
 POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='black'
 POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='green'
 POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='black'
 POWERLEVEL9K_VCS_CLEAN_BACKGROUND='green'
 POWERLEVEL9K_VCS_CLEAN_FOREGROUND='black'
 
-# User with skull
-user_with_skull() {
-    echo -n "\ufb8a $(whoami)"
-}
-POWERLEVEL9K_CUSTOM_USER="user_with_skull"
+#characters backspace 
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-source /home/rtm/GIT/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+#Custom plugins
+source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+#source
+source $ZSH/oh-my-zsh.sh
