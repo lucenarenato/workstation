@@ -45,7 +45,7 @@ POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=3
 
 ## User with skull
 user_with_skull() {
-    echo -n "\uf1d0 work-$(whoami)"
+    echo -n "\uf1d0 $(whoami)"
 }
 POWERLEVEL9K_CUSTOM_USER="user_with_skull"
 
