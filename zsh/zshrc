@@ -88,7 +88,7 @@ POWERLEVEL9K_KUBECONTEXT_FOREGROUND='black'
 
 
 #characters backspace 
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+#WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 #Custom plugins
 source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
