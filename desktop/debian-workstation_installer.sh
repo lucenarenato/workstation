@@ -156,26 +156,13 @@ apt-get update && apt-get -y upgrade
 apt-get -y install virtualbox-5.2
 
 ####### Testing google-chrome for now ######
-###Install Firefox pt-BR Latest
-wget -O /tmp/FirefoxSetup.bzip2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=pt-BR"
-tar -xvjf /tmp/FirefoxSetup.bzip2 -C /usr/local
-ln -s /usr/local/firefox/firefox /usr/bin/firefox-quantum
-cat <<EOF > /usr/share/applications/firefox-quantum.desktop
-[Desktop Entry]
-Name=Firefox Quantum
-Exec=/usr/local/firefox/firefox %u
-Terminal=false
-X-MultipleArgs=false
-Type=Application
-Icon=/usr/local/firefox/browser/chrome/icons/default/default128.png
-Categories=Network;WebBrowser;
-MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;
-StartupWMClass=Firefox-quantum
-StartupNotify=true
-EOF
+###Install Firefox Latest
+wget -O ~/FirefoxSetup.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64"
+sudo tar xjf ~/FirefoxSetup.tar.bz2 -C /opt/
+sudo mv /usr/lib/firefox/firefox /usr/lib/firefox/firefox_backup
+sudo ln -s /opt/firefox/firefox /usr/lib/firefox/firefox
+rm -rf ~/FirefoxSetup.tar.bz2 
 
-##Change folder permission
-chown -R $user:$user /usr/local/firefox/
 
 
 #Install Google Chrome
