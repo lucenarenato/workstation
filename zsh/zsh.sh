@@ -13,6 +13,9 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 #syslink 
 ln -s -f $PWD/zshrc ~/.zshrc
 
+#install powerlevel9k
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+
 #set zsh as default shell
 clear
 echo "To set zsh as default shell run sudo chsh -s $(which zsh)"
