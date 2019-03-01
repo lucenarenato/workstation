@@ -324,6 +324,10 @@ runuser -l $user -c 'gtk-update-icon-cache ~/.icons/Numix-Circle-Light'
 git clone https://github.com/vinceliuice/vimix-icon-theme.git /tmp/vimix-icons
 sh -c "/tmp/vimix-icons/Installer.sh"
 
+#Install Oranchelo Icons
+git clone https://github.com/OrancheloTeam/oranchelo-icon-theme.git /tmp/oranchelo-icons
+sh -c "/tmp/oranchelo-icons/oranchelo-installer.sh"
+
 #Install plank themes
 runuser -l $user -c 'mkdir -p ~/.local/share/plank/themes'
 runuser -l $user -c 'git clone https://github.com/erikdubois/plankthemes.git ~/.local/share/plank/themes'
