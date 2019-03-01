@@ -90,8 +90,13 @@
 #   V1.0.1 2018-10-01
 #       - Plank autostart
 #
+#   V1.0.2 2019-02-28
+#       - Vimix Theme
+#       - New icons
+#       - New fonts
+#
+#
 #   TODO
-#   * Add mojav theme - gnome3
 #   * Install telegram - site
 #   * Fonts download
 #   * Icons Fix
@@ -99,7 +104,6 @@
 #   * Add zsh / oh-my-zsh as default shell
 #   * Auto configure / install plugins for zsh
 #   * Search new font for shell
-#   * use tmux with mouse
 
 #RTM
 
@@ -141,7 +145,7 @@ apt-get update && apt-get -y upgrade
 
 
 #Install the packages from debian repo
-apt-get -y install plank clementine deluge dia vim vim-gtk vim-gui-common nmap vlc gimp blender gconf-editor fonts-powerline inkscape brasero gparted wireshark tmux curl net-tools iproute2 vpnc-scripts network-manager-vpnc vpnc network-manager-vpnc-gnome x2goclient xfce4-goodies xfce4-*plugin git gnome-icon-theme idle3 numix-gtk-theme numix-icon-theme firmware-linux firmware-linux-nonfree firmware-linux-free fonts-hack-ttf apt-transport-https htop python3-pip meld dconf-cli openvpn network-manager-openvpn network-manager-openvpn-gnome snapd gnome-terminal
+apt-get -y install zsh plank clementine deluge dia vim vim-gtk vim-gui-common nmap vlc gimp blender gconf-editor fonts-powerline inkscape brasero gparted wireshark tmux curl net-tools iproute2 vpnc-scripts network-manager-vpnc vpnc network-manager-vpnc-gnome x2goclient xfce4-goodies xfce4-*plugin git gnome-icon-theme idle3 numix-gtk-theme numix-icon-theme firmware-linux firmware-linux-nonfree firmware-linux-free fonts-hack-ttf apt-transport-https htop meld dconf-cli openvpn network-manager-openvpn network-manager-openvpn-gnome snapd gnome-terminal gtk2-engines-murrine gtk2-engines-pixbuf python-pip
 
 #Install the packages from snap repo
 
@@ -169,9 +173,11 @@ rm -rf ~/FirefoxSetup.tar.bz2
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/google-chrome-stable_current_amd64.deb
 dpkg -i /tmp/google-chrome-stable_current_amd64.deb
 
-#Install GTK theme - Repo dont exist anymore
-wget https://gitlab.com/LinxGem33/X-Arc-White/uploads/26bccc81678392584149afa3167f8e78/osx-arc-collection_1.4.7_amd64.deb -O /tmp/osx-arc-collection_1.4.7_amd64.deb
-dpkg -i /tmp/osx-arc-collection_1.4.7_amd64.deb
+#Install GTK theme Vimix- Repo dont exist anymore
+git clone https://github.com/vinceliuice/vimix-gtk-themes.git /tmp/vimix
+sh -c "/tmp/vimix/Install"
+
+
 
 
 ##Install Visual Code
@@ -181,6 +187,16 @@ dpkg -i /tmp/visual_code_amd64.deb
 #Install Fonts
 git clone https://github.com/powerline/fonts.git /tmp/fonts/
 bash /tmp/fonts/install.sh
+
+wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf -O ~/.local/share/fonts/PowerlineSymbols.otf
+
+mkdir -p ~/.config/fontconfig/conf.d/
+wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf -O ~/.config/fontconfig/conf.d/10-powerline-symbols.conf
+
+git clone https://github.com/gabrielelana/awesome-terminal-fonts.git /tmp/awesome-terminal-fonts
+sh -c "/tmp/awesome-terminal-fonts/install.sh"
+
+fc-cache -vf ~/.local/share/fonts/
 
 #Add Gogh
 ##Elementary
@@ -303,6 +319,10 @@ runuser -l $user -c 'mkdir -p ~/.icons'
 runuser -l $user -c 'git clone https://github.com/numixproject/numix-icon-theme-circle.git ~/.icons'
 runuser -l $user -c 'gtk-update-icon-cache ~/.icons/Numix-Circle'
 runuser -l $user -c 'gtk-update-icon-cache ~/.icons/Numix-Circle-Light'
+
+#Install Vimix Icons
+git clone https://github.com/vinceliuice/vimix-icon-theme.git /tmp/vimix-icons
+sh -c "/tmp/vimix-icons/Installer.sh"
 
 #Install plank themes
 runuser -l $user -c 'mkdir -p ~/.local/share/plank/themes'
