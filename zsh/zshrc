@@ -111,6 +111,7 @@ POWERLEVEL9K_KUBECONTEXT_FOREGROUND='black'
 
 #Custom plugins
 source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 
 #source
