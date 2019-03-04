@@ -94,6 +94,7 @@
 #       - Vimix Theme
 #       - New icons
 #       - New fonts
+#       - New Cursor
 #
 #
 #   TODO
@@ -145,7 +146,7 @@ apt-get update && apt-get -y upgrade
 
 
 #Install the packages from debian repo
-apt-get -y install zsh plank clementine deluge dia vim vim-gtk vim-gui-common nmap vlc gimp blender gconf-editor fonts-powerline inkscape brasero gparted wireshark tmux curl net-tools iproute2 vpnc-scripts network-manager-vpnc vpnc network-manager-vpnc-gnome x2goclient xfce4-goodies xfce4-*plugin git gnome-icon-theme idle3 numix-gtk-theme numix-icon-theme firmware-linux firmware-linux-nonfree firmware-linux-free fonts-hack-ttf apt-transport-https htop meld dconf-cli openvpn network-manager-openvpn network-manager-openvpn-gnome snapd gnome-terminal gtk2-engines-murrine gtk2-engines-pixbuf python-pip
+apt-get -y install zsh plank clementine deluge breeze-cursor-theme oxygen-cursor-theme oxygen-cursor-theme-extra dia vim vim-gtk vim-gui-common nmap vlc gimp blender gconf-editor fonts-powerline inkscape brasero gparted wireshark tmux curl net-tools iproute2 vpnc-scripts network-manager-vpnc vpnc network-manager-vpnc-gnome x2goclient xfce4-goodies xfce4-*plugin git gnome-icon-theme idle3 numix-gtk-theme numix-icon-theme firmware-linux firmware-linux-nonfree firmware-linux-free fonts-hack-ttf apt-transport-https htop meld dconf-cli openvpn network-manager-openvpn network-manager-openvpn-gnome snapd gnome-terminal gtk2-engines-murrine gtk2-engines-pixbuf python-pip
 
 #Install the packages from snap repo
 
@@ -325,6 +326,7 @@ git clone https://github.com/vinceliuice/vimix-icon-theme.git /tmp/vimix-icons
 sh -c "/tmp/vimix-icons/Installer.sh"
 
 #Install Oranchelo Icons
+mkdir -p /home/rtm/.local/share/icons/
 git clone https://github.com/OrancheloTeam/oranchelo-icon-theme.git /tmp/oranchelo-icons
 sh -c "/tmp/oranchelo-icons/oranchelo-installer.sh"
 
