@@ -56,7 +56,8 @@ KUBE_PS1_SYMBOL_USE_IMG="\u2638"
 
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_user dir_writable dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=( status background_jobs command_execution_time kubecontext )
+#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=( status background_jobs command_execution_time kubecontext )
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=( status background_jobs command_execution_time custom_command)
 
 
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=5
@@ -67,6 +68,12 @@ user_with_skull() {
     echo -n "\uf1d0 $(whoami)"
 }
 POWERLEVEL9K_CUSTOM_USER="user_with_skull"
+
+#Kubecontext
+read_kube_config_context() {
+	    cat ~/.kube/config |grep name |tail -n1 |awk {'print $3'}
+    }
+POWERLEVEL9K_CUSTOM_COMMAND="read_kube_config_context"
 
 
 #Colors
