@@ -145,7 +145,7 @@ apt-get update && apt-get -y upgrade
 
 
 #Install the packages from debian repo
-apt-get -y install zsh plank clementine deluge breeze-cursor-theme oxygen-cursor-theme oxygen-cursor-theme-extra dia vim vim-gtk vim-gui-common nmap vlc gimp blender gconf-editor fonts-powerline inkscape brasero gparted wireshark tmux curl net-tools iproute2 vpnc-scripts network-manager-vpnc vpnc network-manager-vpnc-gnome x2goclient xfce4-goodies xfce4-*plugin git gnome-icon-theme idle3 numix-gtk-theme numix-icon-theme firmware-linux firmware-linux-nonfree firmware-linux-free fonts-hack-ttf apt-transport-https htop meld dconf-cli openvpn network-manager-openvpn network-manager-openvpn-gnome snapd gnome-terminal guake guake-indicator gtk2-engines-murrine gtk2-engines-pixbuf python-pip
+apt-get -y install zsh plank clementine breeze-cursor-theme oxygen-cursor-theme oxygen-cursor-theme-extra dia vim vim-gtk vim-gui-common nmap vlc gimp blender gconf-editor fonts-powerline inkscape brasero gparted wireshark tmux curl net-tools iproute2 vpnc-scripts network-manager-vpnc vpnc network-manager-vpnc-gnome x2goclient git gnome-icon-theme idle3 numix-gtk-theme numix-icon-theme fonts-hack-ttf apt-transport-https htop meld dconf-cli openvpn network-manager-openvpn network-manager-openvpn-gnome snapd gnome-terminal guake guake-indicator gtk2-engines-murrine gtk2-engines-pixbuf python-pip gnome-tweaks
 
 #Install the packages from snap repo
 
@@ -220,99 +220,6 @@ usermod -s /usr/bin/fish $user
 
 #New VIM
 runuser -l $user -c 'curl -sLf https://spacevim.org/install.sh' | bash
-
-#Set Oh My Fish
-#Credits <https://github.com/oh-my-fish/oh-my-fish>
-runuser -l $user -c 'curl -L https://get.oh-my.fish > install'
-runuser -l $user -c 'fish install --path=~/.local/share/omf --config=~/.config/omf --noninteractive'
-
-
-#Set Fisherman(https://github.com/fisherman/fisherman)
-runuser -l $user -c 'curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher'
-
-#Add Fisherman packages
-runuser -l $user -c 'fisher install edc/bass'
-runuser -l $user -c 'fisher install laughedelic/pisces'
-runuser -l $user -c 'fisher install z'
-#runuser -l $user -c 'fisher install omf/theme-bobthefish'
-
-#Add fish config
-runuser -l $user -c 'touch ~/.config/fish/config.fish'
-
-cat <<EOF >> /home/$user/.config/fish/config.fish
-set -g theme_display_git yes
-set -g theme_display_git_dirty yes
-set -g theme_display_git_untracked yes
-set -g theme_display_git_ahead_verbose yes
-set -g theme_display_git_dirty_verbose yes
-set -g theme_display_git_master_branch yes
-#set -g theme_git_worktree_support yes
-set -g theme_display_docker_machine yes
-set -g theme_display_k8s_context yes
-set -g theme_display_hg yes
-set -g theme_display_virtualenv yes
-set -g theme_display_user ssh
-set -g theme_display_hostname ssh
-set -g theme_display_date yes
-set -g theme_display_cmd_duration yes
-set -g theme_date_format "+%Y-%m-%d %H:%M"
-set -g theme_title_display_process yes
-#set -g theme_title_display_path yes
-#set -g theme_title_display_user yes
-set -g theme_title_use_abbreviated_path yes
-set -g theme_avoid_ambiguous_glyphs yes
-set -g theme_powerline_fonts yes
-set -g theme_nerd_fonts no
-set -g theme_show_exit_status yes
-#set -g default_user your_normal_user
-set -g fish_prompt_pwd_dir_length 1
-set -g theme_newline_cursor no
-set -g theme_color_scheme zenburn
-EOF
-
-#Set Tmux basic config
-#CREDITS to Gregory <https://github.com/gpakosz>
-runuser -l $user -c 'cd /home/$user'
-runuser -l $user -c 'git clone https://github.com/gpakosz/.tmux.git'
-runuser -l $user -c 'ln -s -f .tmux/.tmux.conf'
-runuser -l $user -c 'cp .tmux/.tmux.conf.local .'
-
-echo 'export TERM="xterm-256color"' >> /home/$user/.bashrc
-echo 'alias tmux="tmux -2"' >> /home/$user/.bashrc
-
-#Install plugin manager for tmux
-#Credits  <https://github.com/tmux-plugins/tpm>
-runuser -l $user -c 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm'
-cat <<EOF >> /home/$user/.tmux.conf
-# List of plugins
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'tmux-plugins/tmux-resurrect'
-set -g @resurrect-capture-pane-contents 'on'
-
-# Other examples:
-# set -g @plugin 'github_username/plugin_name'
-# set -g @plugin 'git@github.com/user/plugin'
-# set -g @plugin 'git@bitbucket.com/user/plugin'
-
-# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-run '~/.tmux/plugins/tpm/tpm'
-EOF
-
-#Add bind keys to tmux
-sed -i 's/bind -r C-l next-window/#bind -r C-l next-window/g' ~/.tmux.conf
-sed -i 's/bind -r C-h previous-window/#bind -r C-h previous-window /g' ~/.tmux.conf
-echo "bind -n M-Left  previous-window" >>  ~/.tmux.conf
-echo "bind -n M-Right next-window" >>  ~/.tmux.conf
-
-#Change Tmux separator icons
-grep -rl "tmux_conf_theme_left" ~/.tmux.conf.local |xargs sed -i "s/tmux_conf_theme_left/#/g"
-grep -rl "tmux_conf_theme_right" ~/.tmux.conf.local |xargs sed -i "s/tmux_conf_theme_right/#/g"
-echo "tmux_conf_theme_left_separator_main=''" >> ~/.tmux.conf.local 
-echo "tmux_conf_theme_left_separator_sub=''" >> ~/.tmux.conf.local
-echo "tmux_conf_theme_right_separator_main=''" >> ~/.tmux.conf.local
-echo "tmux_conf_theme_right_separator_sub=''" >> ~/.tmux.conf.local
-
 
 #Install numix-circle-icons
 runuser -l $user -c 'mkdir -p ~/.icons'
