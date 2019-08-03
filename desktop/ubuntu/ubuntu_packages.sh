@@ -192,16 +192,24 @@ git clone https://github.com/vinceliuice/vimix-icon-theme.git /tmp/vimix-icons
 sh -c "/tmp/vimix-icons/Installer.sh"
 
 #Install Oranchelo Icons
-mkdir -p /home/rtm/.local/share/icons/
-git clone https://github.com/OrancheloTeam/oranchelo-icon-theme.git /tmp/oranchelo-icons
-sh -c "/tmp/oranchelo-icons/oranchelo-installer.sh"
+#mkdir -p /home/rtm/.local/share/icons/
+#git clone https://github.com/OrancheloTeam/oranchelo-icon-theme.git /tmp/oranchelo-icons
+#sh -c "/tmp/oranchelo-icons/oranchelo-installer.sh"
 
 #Install plank themes
 mkdir -p ~/.local/share/plank/themes
 git clone https://github.com/erikdubois/plankthemes.git ~/.local/share/plank/themes
 
+#Layan theme
+git clone https://github.com/vinceliuice/Layan-gtk-theme.git /tmp/Layan-gtk-theme
+sh -c "/tmp/Layan-gtk-theme/install.sh"
+
+#Tela-blue icons
+git clone https://github.com/vinceliuice/Tela-icon-theme.git /tmp/Tela-icon-theme
+sudo sh -c "/tmp/Tela-icon-theme/install.sh"
+
 #Set plank autostart
-curl -o ~/.config/autostart/plank.desktop https://raw.githubusercontent.com/renantmagalhaes/workstation/static-files/plank-fix/plank.desktop
+#curl -o ~/.config/autostart/plank.desktop https://raw.githubusercontent.com/renantmagalhaes/workstation/static-files/plank-fix/plank.desktop
 
 
 #RTM
