@@ -71,7 +71,7 @@ POWERLEVEL9K_CUSTOM_USER="user_with_skull"
 
 #Kubecontext
 read_kube_config_context() {
-	    cat ~/.kube/config |grep name |tail -n1 |awk {'print $3'}
+	    cat ~/.kube/config |grep name |tail -n2 |awk {'print $3'}
     }
 POWERLEVEL9K_CUSTOM_COMMAND="read_kube_config_context"
 
