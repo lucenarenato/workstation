@@ -106,10 +106,10 @@
 #RTM
 
 #Root check
-if [ “$(id -u)” != “0” ]; then
-echo “This script must be run as root” 2>&1
-exit 1
-fi
+#if [ “$(id -u)” != “0” ]; then
+#echo “This script must be run as root” 2>&1
+#exit 1
+#fi
 
 #User check
 echo "#########################"
@@ -126,7 +126,7 @@ apt-get update && apt-get -y upgrade
 
 
 #Install the packages from debian repo
-apt-get -y install zsh plank clementine breeze-cursor-theme oxygen-cursor-theme oxygen-cursor-theme-extra dia vim vim-gtk vim-gui-common nmap vlc gimp blender gconf-editor fonts-powerline inkscape brasero gparted wireshark tmux curl net-tools iproute2 vpnc-scripts network-manager-vpnc vpnc network-manager-vpnc-gnome x2goclient git gnome-icon-theme idle3 numix-gtk-theme numix-icon-theme fonts-hack-ttf apt-transport-https htop meld dconf-cli openvpn network-manager-openvpn network-manager-openvpn-gnome snapd gnome-terminal guake guake-indicator gtk2-engines-murrine gtk2-engines-pixbuf python-pip gnome-tweaks
+sudo apt-get -y install zsh plank clementine breeze-cursor-theme oxygen-cursor-theme oxygen-cursor-theme-extra dia vim vim-gtk vim-gui-common nmap vlc gimp blender gconf-editor fonts-powerline inkscape brasero gparted wireshark tmux curl net-tools iproute2 vpnc-scripts network-manager-vpnc vpnc network-manager-vpnc-gnome x2goclient git gnome-icon-theme idle3 numix-gtk-theme numix-icon-theme fonts-hack-ttf apt-transport-https htop meld dconf-cli openvpn network-manager-openvpn network-manager-openvpn-gnome snapd gnome-terminal guake guake-indicator gtk2-engines-murrine gtk2-engines-pixbuf python-pip gnome-tweaks
 
 #Install the packages from snap repo
 
@@ -134,7 +134,7 @@ apt-get -y install zsh plank clementine breeze-cursor-theme oxygen-cursor-theme 
 snap install slack --classic
 
 #Update / upgrade
-apt-get update && apt-get -y upgrade
+sudo apt-get update && sudo apt-get -y upgrade
 
 
 ####### Testing google-chrome for now ######
@@ -147,7 +147,7 @@ rm -rf ~/FirefoxSetup.tar.bz2
 
 #Install Google Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/google-chrome-stable_current_amd64.deb
-dpkg -i /tmp/google-chrome-stable_current_amd64.deb
+sudo dpkg -i /tmp/google-chrome-stable_current_amd64.deb
 
 #Install GTK theme Vimix
 git clone https://github.com/vinceliuice/vimix-gtk-themes.git /tmp/vimix
@@ -155,7 +155,7 @@ sh -c "/tmp/vimix/Install"
 
 ##Install Visual Code
 wget --content-disposition https://go.microsoft.com/fwlink/?LinkID=760868 -O /tmp/visual_code_amd64.deb
-dpkg -i /tmp/visual_code_amd64.deb
+sudo dpkg -i /tmp/visual_code_amd64.deb
 
 #Install Fonts
 git clone https://github.com/powerline/fonts.git /tmp/fonts/
@@ -171,11 +171,11 @@ sh -c "/tmp/awesome-terminal-fonts/install.sh"
 
 fc-cache -vf ~/.local/share/fonts/
 
-#Add Gogh
-##Elementary
-runuser -l $user -c 'wget -O xt  http://git.io/v3D8R && chmod +x xt && ./xt && rm xt'
-## Grubvbox dark
-runuser -l $user -c 'wget -O xt https://git.io/v7eBS && chmod +x xt && ./xt && rm xt'
+##Add Gogh
+###Elementary
+#runuser -l $user -c 'wget -O xt  http://git.io/v3D8R && chmod +x xt && ./xt && rm xt'
+### Grubvbox dark
+#runuser -l $user -c 'wget -O xt https://git.io/v7eBS && chmod +x xt && ./xt && rm xt'
 
 
 #New VIM
@@ -189,7 +189,7 @@ gtk-update-icon-cache ~/.icons/Numix-Circle-Light
 
 #Install Vimix Icons
 git clone https://github.com/vinceliuice/vimix-icon-theme.git /tmp/vimix-icons
-sh -c "/tmp/vimix-icons/Installer.sh"
+sh -c "/tmp/vimix-icons/install.sh"
 
 #Install Oranchelo Icons
 #mkdir -p /home/rtm/.local/share/icons/
@@ -197,8 +197,8 @@ sh -c "/tmp/vimix-icons/Installer.sh"
 #sh -c "/tmp/oranchelo-icons/oranchelo-installer.sh"
 
 #Install plank themes
-mkdir -p ~/.local/share/plank/themes
-git clone https://github.com/erikdubois/plankthemes.git ~/.local/share/plank/themes
+#mkdir -p ~/.local/share/plank/themes
+#git clone https://github.com/erikdubois/plankthemes.git ~/.local/share/plank/themes
 
 #Layan theme
 git clone https://github.com/vinceliuice/Layan-gtk-theme.git /tmp/Layan-gtk-theme
@@ -206,7 +206,7 @@ sh -c "/tmp/Layan-gtk-theme/install.sh"
 
 #Tela-blue icons
 git clone https://github.com/vinceliuice/Tela-icon-theme.git /tmp/Tela-icon-theme
-sudo sh -c "/tmp/Tela-icon-theme/install.sh"
+sh -c "/tmp/Tela-icon-theme/install.sh"
 
 #Set plank autostart
 #curl -o ~/.config/autostart/plank.desktop https://raw.githubusercontent.com/renantmagalhaes/workstation/static-files/plank-fix/plank.desktop
