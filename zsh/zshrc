@@ -70,8 +70,12 @@ user_with_skull() {
 POWERLEVEL9K_CUSTOM_USER="user_with_skull"
 
 #Kubecontext
+#read_kube_config_context() {
+#	    cat ~/.kube/config |grep name |tail -n2 |awk {'print $3'}
+#    }
+#
 read_kube_config_context() {
-	    cat ~/.kube/config |grep name |tail -n2 |awk {'print $3'}
+	    kubectl config current-context
     }
 POWERLEVEL9K_CUSTOM_COMMAND="read_kube_config_context"
 
